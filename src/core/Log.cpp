@@ -135,6 +135,7 @@
 #include <opentxs/core/Log.hpp>
 #include <opentxs/core/util/OTPaths.hpp>
 #include <opentxs/core/util/stacktrace.h>
+#include <opentxs/core/crypto/OTCrypto.hpp>
 #include <opentxs/core/Version.hpp>
 
 #include <cstring>
@@ -1313,6 +1314,29 @@ void Log::SetupSignalHandler()
 }
 
 #endif // #if windows, #else (unix) #endif. (SIGNAL handling.)
+
+std::string trace_to_string(const std::string& input)
+{
+    return OTCrypto::It()->Base64Encode(
+        reinterpret_cast<const uint8_t*>(input.c_str()), input.size(), false);
+}
+
+std::string trace_to_string(const String& input)
+{
+    return trace_to_string(std::string(input.Get()));
+}
+
+std::string trace_to_string(const char* input)
+{
+    return trace_to_string(std::string(input));
+}
+
+std::string trace_to_string(const OTData& input)
+{
+    return OTCrypto::It()->Base64Encode(
+        reinterpret_cast<const uint8_t*>(input.GetPointer()), input.GetSize(),
+        false);
+}
 
 } // namespace opentxs
 

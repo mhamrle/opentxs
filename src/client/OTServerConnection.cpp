@@ -225,6 +225,9 @@ void OTServerConnection::send(OTServerContract* pServerContract, Nym* pNym,
     String strContents;
     theMessage.SaveContractRaw(strContents);
 
+    static int msg_id = 1;
+    TRACE_MESSAGE(strContents, "client", msg_id++);
+
     otOut << "\n=====>BEGIN Sending " << theMessage.m_strCommand
           << " message via ZMQ... Request number: "
           << theMessage.m_strRequestNum << "\n";

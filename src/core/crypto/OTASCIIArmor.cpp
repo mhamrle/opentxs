@@ -397,6 +397,7 @@ bool OTASCIIArmor::SetData(const OTData& theData, bool bLineBreaks)
         return false;
     }
 
+    TRACE(theData, pString);
     Set(pString);
     delete[] pString;
     return true;
@@ -463,6 +464,7 @@ bool OTASCIIArmor::SetString(const String& strData, bool bLineBreaks) //=true
         return false;
     }
 
+    TRACE(strData, pString);
     Set(pString);
     delete[] pString;
     return true;

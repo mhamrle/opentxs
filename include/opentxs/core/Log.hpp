@@ -139,6 +139,7 @@
 #include <deque>
 #include <iostream>
 #include <cstdint>
+#include <chrono>
 
 #if defined(unix) || defined(__unix__) || defined(__unix) ||                   \
     defined(__APPLE__) || defined(linux) || defined(__linux) ||                \
@@ -150,8 +151,15 @@
 #define PREDEF_MODE_DEBUG 1
 #endif
 
+#define TRACE(input, output)                                                   \
+    trace(input, output, __FILE__, __FUNCTION__, __LINE__)
+#define TRACE_MESSAGE(input, spec, id)                                         \
+    trace_message(input, spec, id, __FILE__, __FUNCTION__, __LINE__)
+
 namespace opentxs
 {
+
+class OTData;
 
 typedef std::deque<String*> dequeOfStrings;
 
@@ -321,6 +329,35 @@ public:
                                              // it in xmlrpcxx_client.cpp just
                                              // above OT_Init.
 };
+
+std::string trace_to_string(const char* input);
+std::string trace_to_string(const std::string& input);
+std::string trace_to_string(const String& input);
+std::string trace_to_string(const OTData& input);
+
+template <class I, class O>
+void trace(const I& input, const O& output, const char* filename,
+           const char* function, int line)
+{
+    std::string input_str = trace_to_string(input);
+    std::string output_str = trace_to_string(output);
+    otErr << "TraceLine: " << input_str << ";" << output_str << ";" << filename
+          << ":" << function << ":" << line << "\n";
+}
+
+template <class I>
+void trace_message(const I& input, const std::string spec, int id,
+                   const char* filename, const char* function, int line)
+{
+    std::string input_str = trace_to_string(input);
+    std::chrono::milliseconds milisec =
+        std::chrono::duration_cast<std::chrono::milliseconds>(
+            std::chrono::high_resolution_clock::now().time_since_epoch());
+    std::string output("message_" + spec + "_" + std::to_string(id) + "_" +
+                       std::to_string(milisec.count()));
+    otErr << "TraceLine: " << input_str << ";" << output << ";" << filename
+          << ":" << function << ":" << line << "\n";
+}
 
 } // namespace opentxs
 

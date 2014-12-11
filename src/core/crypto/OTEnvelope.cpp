@@ -357,6 +357,7 @@ bool OTEnvelope::Encrypt(const String& theInput, OTSymmetricKey& theKey,
     // however.
     // (for security / safety reasons.)
 
+    TRACE(theInput, m_dataContents);
     return true;
 }
 
@@ -509,6 +510,7 @@ bool OTEnvelope::Decrypt(String& theOutput, const OTSymmetricKey& theKey,
         //
         theOutput.Set(static_cast<const char*>(thePlaintext.GetPointer()));
     }
+    TRACE(theOutput, thePlaintext);
 
     return bDecrypted;
 }

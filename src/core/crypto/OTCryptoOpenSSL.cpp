@@ -2044,7 +2044,7 @@ bool OTCrypto_OpenSSL::Seal(mapOfAsymmetricKeys& RecipPubKeys,
         // cppcheck-suppress unreadVariable
         bFinalized = true;
     }
-
+    TRACE(theInput, dataOutput);
     return true;
 }
 

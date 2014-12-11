@@ -762,7 +762,7 @@ bool OTSymmetricKey::Encrypt(const OTSymmetricKey& theKey,
                                 *pPassUserInput) &&
             theEnvelope.GetAsciiArmoredData(ascOutput)) {
             bSuccess = true;
-
+            TRACE(strPlaintext, ascOutput.Get());
             if (bBookends) {
                 return ascOutput.WriteArmoredString(
                     strOutput, "SYMMETRIC MSG", // todo hardcoding.

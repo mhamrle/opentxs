@@ -226,6 +226,8 @@ void MessageProcessor::processSocket()
     std::string responseString;
 
     bool error = processMessage(requestString, responseString);
+    static int msg_id = 1;
+    TRACE_MESSAGE(responseString, "server", msg_id++);
 
     if (error) {
         responseString = "";
