@@ -126,7 +126,7 @@ bool opentxs::OT_API_Set_PasswordCallback(OTCaller & theCaller);
 bool opentxs::OT_API_Set_AddrBookCallback(OTLookupCaller & theCaller);
 
 
-// add the follwing to every .cxx file.
+// add the following to every .cxx file.
 %inline %{
   using namespace opentxs;
   using namespace OTDB;
