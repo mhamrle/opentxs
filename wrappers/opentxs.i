@@ -30,6 +30,7 @@ typedef int64_t time64_t;
 #include <map>
 
 #include "../../include/opentxs/core/crypto/OTCaller.hpp"
+#include "../../include/opentxs/core/crypto/OTCallback.hpp"
 #include "../../include/opentxs/core/crypto/OTPassword.hpp"
 #include "../../include/opentxs/core/crypto/OTAsymmetricKey.hpp"
 #include "../../include/opentxs/core/OTStorage.hpp"
@@ -113,6 +114,7 @@ namespace std {
 #endif
 
 %include "../../include/opentxs/core/crypto/OTCaller.hpp"
+%include "../../include/opentxs/core/crypto/OTCallback.hpp"
 %include "../../include/opentxs/core/crypto/OTPassword.hpp"
 %include "../../include/opentxs/core/crypto/OTAsymmetricKey.hpp"
 %include "../../include/opentxs/core/OTStorage.hpp"
