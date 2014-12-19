@@ -33,7 +33,7 @@ else()
 endif()
 
 target_link_libraries(opentxs-ext opentxs-cash opentxs-core ${ZMQ_LIBRARY})
-set_target_properties(opentxs-ext PROPERTIES VERSION ${VERSION_STRING} SOVERSION ${VERSION_MAJOR})
+set_lib_property(opentxs-ext)
 
 if(WIN32)
   add_custom_command(TARGET opentxs-ext POST_BUILD

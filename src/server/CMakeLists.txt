@@ -46,7 +46,7 @@ else()
   target_link_libraries(opentxs-server opentxs-ext opentxs-cash opentxs-basket opentxs-core)
 endif()
 
-set_target_properties(opentxs-server PROPERTIES VERSION ${VERSION_STRING} SOVERSION ${VERSION_MAJOR})
+set_lib_property(opentxs-server)
 
 if(WIN32)
   add_custom_command(TARGET opentxs-server POST_BUILD
