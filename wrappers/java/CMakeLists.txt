@@ -4,7 +4,7 @@ message("** Java Wrapper")
 
 set(OTX_WRAPPER_NAME "JOpentxs")
 
-set(CMAKE_SWIG_FLAGS "")
+set(CMAKE_SWIG_FLAGS -package org.opentransactions.otapi)
 
 if(CMAKE_CROSSCOMPILING)
   set( CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER )
