@@ -25,6 +25,7 @@ set(MOD_NAME ${SWIG_MODULE_${OTX_WRAPPER_NAME}_REAL_NAME})
 target_link_libraries(${MOD_NAME} ${OTX_LINK_LIBS})
 set_target_properties(${MOD_NAME}
                       PROPERTIES OUTPUT_NAME _opentxs)
+set_lib_property(${MOD_NAME})
 string(REGEX REPLACE "\\.[0-9]+$" "" PYTHON_VERSION "${PYTHONLIBS_VERSION_STRING}")
 install(TARGETS ${MOD_NAME}
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/python${PYTHON_VERSION}/site-packages

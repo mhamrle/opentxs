@@ -77,7 +77,7 @@ csharp_add_library(
 
 add_dependencies(${MANAGED_ASSEMBLY}
   ${MOD_NAME})
-
+set_lib_property(${MOD_NAME})
 
 # Install
 install(TARGETS ${MOD_NAME} 
