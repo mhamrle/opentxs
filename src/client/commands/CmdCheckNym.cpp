@@ -166,7 +166,7 @@ int32_t CmdCheckNym::run(string server, string mynym, string hisnym)
         return -1;
     }
 
-    if (!checkNym("hisnym", hisnym)) {
+    if (!checkNym("hisnym", hisnym, false)) {
         return -1;
     }
 

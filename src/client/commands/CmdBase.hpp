@@ -193,7 +193,8 @@ protected:
     bool checkIndicesRange(const char* name, const std::string& indices,
                            int32_t items) const;
     bool checkMandatory(const char* name, const std::string& value) const;
-    bool checkNym(const char* name, std::string& nym) const;
+    bool checkNym(const char* name, std::string& nym,
+                  bool checkExistance = true) const;
     bool checkPurse(const char* name, std::string& purse) const;
     bool checkServer(const char* name, std::string& server) const;
     int64_t checkTransNum(const char* name, const std::string& id) const;

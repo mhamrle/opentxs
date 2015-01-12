@@ -298,7 +298,7 @@ bool CmdBase::checkMandatory(const char* name, const string& value) const
     return true;
 }
 
-bool CmdBase::checkNym(const char* name, string& nym) const
+bool CmdBase::checkNym(const char* name, string& nym, bool checkExistance) const
 {
     if (!checkMandatory(name, nym)) {
         return false;
@@ -308,15 +308,17 @@ bool CmdBase::checkNym(const char* name, string& nym) const
     Nym* theNym = wallet->GetNymByID(nym);
     if (theNym == nullptr) {
         theNym = wallet->GetNymByIDPartialMatch(nym);
-        if (theNym == nullptr) {
+        if (theNym == nullptr && checkExistance) {
             otOut << "Error: " << name << ": unknown nymm: " << nym << "\n";
             return false;
         }
     }
 
-    String tmp;
-    theNym->GetIdentifier(tmp);
-    nym = tmp.Get();
+    if (theNym) {
+        String tmp;
+        theNym->GetIdentifier(tmp);
+        nym = tmp.Get();
+    }
     otOut << "Using " << name << ": " << nym << "\n";
     return true;
 }

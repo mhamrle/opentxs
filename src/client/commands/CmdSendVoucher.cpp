@@ -169,7 +169,7 @@ int32_t CmdSendVoucher::run(string myacct, string hisnym, string amount,
         return -1;
     }
 
-    if (!checkNym("hisnym", hisnym)) {
+    if (!checkNym("hisnym", hisnym, false)) {
         return -1;
     }
 
